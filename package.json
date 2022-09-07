@@ -1,0 +1,55 @@
+{
+  "name": "editorjs-laravel-picker",
+  "version": "0.1.0",
+  "keywords": [
+    "tool",
+    "picker",
+    "api",
+    "laravel",
+    "editor.js",
+    "editorjs"
+  ],
+  "description": "Laravel Picker tool for editorjs",
+  "license": "MIT",
+  "repository": "https://github.com/codypchristian/editorjs-laravel-picker",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development --watch",
+    "test": "jest"
+  },
+  "author": {
+    "name": "Cody P. Christian / Erudite Studios, LLC",
+    "email": "opensource@eruditestudios.com"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.10.1",
+    "@testing-library/jest-dom": "^5.9.0",
+    "babel-jest": "^27.5.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^6.5.1",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jest": "^23.13.2",
+    "jest": "^27.5.1",
+    "nock": "^12.0.3",
+    "style-loader": "^3.3.0",
+    "svg-inline-loader": "^0.8.2",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "axios": "0.26.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/config/setupTests.js"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.(css|svg)$": "<rootDir>/test/config/assetsTransform.js"
+    }
+  }
+}
