@@ -43,16 +43,16 @@ export const isUrl = (url) => {
  export const createItemDetails = (itemData) => {
   const wrapper = make('div', 'cdx-picker_item_details');
   const name = make('div', ['cdx-picker_item_details_name'], {
-    innerHTML: itemData.file.name,
+    innerHTML: itemData?.file?.name ?? '',
   });
   const summary = make('div', ['cdx-picker_item_details_summary'], {
-    innerHTML: itemData.file.summary,
+    innerHTML: itemData?.file?.summary ?? '',
   });
   const type = make('div', ['cdx-picker_item_details_type'], {
-    innerHTML: itemData.file.type,
+    innerHTML: itemData?.file?.type ?? '',
   });
   const size = make('div', ['cdx-picker_item_details_size'], {
-    innerHTML: itemData.file.size,
+    innerHTML: itemData?.file?.size ?? '',
   });
   
   wrapper.appendChild(name);
