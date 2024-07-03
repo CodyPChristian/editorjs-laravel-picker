@@ -77,14 +77,14 @@ export default class ControlPanel {
       oninput: () => this.searchInputHandler()
     });
 
-    searchInput.dataset.placeholder = 'Search for an item...';
+    searchInput.dataset.placeholder = 'Search...';
 
     wrapper.appendChild(searchInput);
     wrapper.appendChild(itemGallery);
 
     this.nodes.searchInput = searchInput;
     this.nodes.itemGallery = itemGallery;
-    this.nodes.itemGallery.innerHTML = searchInput.dataset.placeholder;
+    // this.nodes.itemGallery.innerHTML = searchInput.dataset.placeholder;
 
     return wrapper;
   }
@@ -139,7 +139,7 @@ export default class ControlPanel {
       });
     } else {
       const noResults = make('div', this.cssClasses.noResults, {
-        innerHTML: 'No items found',
+        innerHTML: 'No results',
       });
       this.nodes.itemGallery.appendChild(noResults);
       this.nodes.apiPanel.classList.remove(this.cssClasses.scroll);

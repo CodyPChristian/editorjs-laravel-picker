@@ -203,6 +203,6 @@ export default class Ui {
   selectItem(data) {
     this.onAddItemData(data);
     this.showLoader();
-    // this.buildItemDetails(data);
+    this.buildItemDetails(data);
   }
 }
