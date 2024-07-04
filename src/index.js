@@ -72,8 +72,6 @@ export default class LaravelPicker {
     this.data.file.image = data.file && data.file.image ? data.file.image : null
     this.data.file.summary = data.file && data.file.summary ? data.file.summary : null
     this.data.file.size = data.file && data.file.size ? data.file.size : null
-
-    // console.log('idx data', data, this.data);
   }
 
   /**
@@ -82,7 +80,6 @@ export default class LaravelPicker {
    * @returns {HTMLDivElement}
    */
   render() {
-    // console.log('render', this.data);
     return this.ui.render(this.data);
   }
 
@@ -123,7 +120,6 @@ export default class LaravelPicker {
       this.data.file.size = file.size;
     }
 
-    // console.log('save', this.data);
     return this.data;
   }
 
@@ -141,7 +137,7 @@ export default class LaravelPicker {
    *
    * @see {@link https://editorjs.io/sanitizer}
    */
-  static get sanitize() {
+  // static get sanitize() {
     // return {
     //   url: {},
     //   name: {},
@@ -150,7 +146,7 @@ export default class LaravelPicker {
     //   summary: {},
     //   size: {},
     // };
-  }
+  // }
 
   /**
    * Callback for updating data when the item is embedded

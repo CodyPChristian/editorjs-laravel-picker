@@ -77,14 +77,15 @@ export default class ControlPanel {
       oninput: () => this.searchInputHandler()
     });
 
-    searchInput.dataset.placeholder = 'Search...';
+    searchInput.dataset.placeholder = this.config.placeholder || 'Start typing to search...';
+    const bodyPlaceholder = this.config.bodyPlaceholder || 'No results, start by searching...';
 
     wrapper.appendChild(searchInput);
     wrapper.appendChild(itemGallery);
 
     this.nodes.searchInput = searchInput;
     this.nodes.itemGallery = itemGallery;
-    // this.nodes.itemGallery.innerHTML = searchInput.dataset.placeholder;
+    this.nodes.itemGallery.innerHTML = bodyPlaceholder;
 
     return wrapper;
   }

@@ -75,10 +75,8 @@ export default class Ui {
       onerror: () => this.onImageLoadError(),
     });
     this.nodes.imageHolder = make('div', this.CSS.imageHolder);
-
     if (data.file.url) {
       wrapper.appendChild(loader);
-      image.src = data.file.image.replace('amp;', '');
       this.nodes.title = data.file.name;
       this.nodes.file = data.file;
       const details = this.buildItemDetails(data);
@@ -89,6 +87,7 @@ export default class Ui {
       if (button) {
         wrapper.appendChild(button);
       }
+      image.src = data.file.image.replace('amp;', '');
     } else {
       const controlPanelWrapper = this.controlPanel.render();
       this.nodes.controlPanelWrapper = controlPanelWrapper;
@@ -124,7 +123,7 @@ export default class Ui {
   buildItemButton(itemData) {
     if (itemData) {
       return make('a', ['cdx-picker_item_button'], {
-        innerHTML: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m7 10 4.86 4.86c.08.08.2.08.28 0L17 10" stroke="#000" stroke-width="2" stroke-linecap="round"></path></svg>',
+        innerHTML: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>',
         href: itemData.file.url,
         target: '_blank',
         rel: 'nofollow noindex noreferrer'
@@ -141,7 +140,6 @@ export default class Ui {
    */
   onImageLoad() {
     this.nodes.imageHolder.prepend(this.nodes.image);
-    // this.nodes.wrapper.appendChild(this.nodes.imageHolder);
     this.nodes.wrapper.prepend(this.nodes.imageHolder);
     this.nodes.loader.remove();
   }
@@ -155,7 +153,7 @@ export default class Ui {
   onImageLoadError() {
     this.removeCurrentBlock();
     this.api.notifier.show({
-      message: 'Can not load the image, try again!',
+      message: 'Can not load the content, try again!',
       style: 'error',
     });
   }
@@ -203,6 +201,23 @@ export default class Ui {
   selectItem(data) {
     this.onAddItemData(data);
     this.showLoader();
-    this.buildItemDetails(data);
+    
+    if (data.url) {
+      this.nodes.image.src = data.image.replace('amp;', '');
+      this.nodes.title = data.name;
+      this.nodes.file = data;
+      let itemData = {
+        title: data.name,
+        file: data
+      };
+      const details = this.buildItemDetails(itemData);
+      if (details) {
+        this.nodes.wrapper.appendChild(details);
+      }
+      const button = this.buildItemButton(itemData);
+      if (button) {
+        this.nodes.wrapper.appendChild(button);
+      }
+    }
   }
 }
